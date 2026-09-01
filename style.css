@@ -1,0 +1,1186 @@
+/* =========================================================
+   CONFIGURACIÓN GENERAL
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    background: #000000;
+
+    color: #18181b;
+}
+
+
+/* =========================================================
+   BARRA SUPERIOR
+========================================================= */
+
+.topbar {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 22px;
+
+    background: #075e63;
+
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid #0b777c;
+}
+
+
+.topbar-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    min-width: 200px;
+}
+
+
+.logo {
+
+    text-decoration: none;
+
+    color: white;
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+    letter-spacing: -0.8px;
+}
+
+
+.menu-button {
+
+    width: 40px;
+
+    height: 40px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #f0f0f2;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.menu-button:hover {
+
+    background: #e4e4e7;
+
+    transform: scale(1.05);
+}
+
+
+/* =========================================================
+   BUSCADOR
+========================================================= */
+
+.topbar-center {
+
+    flex: 1;
+
+    display: flex;
+
+    justify-content: center;
+
+    padding: 0 30px;
+}
+
+
+.search-box {
+
+    width: 100%;
+
+    max-width: 550px;
+
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 0 12px;
+
+    background: #f0f0f2;
+
+    border-radius: 14px;
+
+    transition: 0.2s;
+}
+
+
+.search-box:focus-within {
+
+    background: #fff;
+
+    box-shadow:
+        0 0 0 2px rgba(0,0,0,0.08);
+}
+
+
+.search-icon {
+
+    font-size: 17px;
+}
+
+
+.search-box input {
+
+    flex: 1;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    font-size: 14px;
+
+    color: #222;
+}
+
+
+.clear-search {
+
+    display: none;
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    color: #777;
+}
+
+
+/* =========================================================
+   PERFIL DE LA BARRA
+========================================================= */
+
+.profile-button {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-weight: 600;
+}
+
+
+.profile-button img {
+
+    width: 38px;
+
+    height: 38px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 2px solid #fff;
+
+    box-shadow:
+        0 1px 6px rgba(0,0,0,0.15);
+}
+
+
+/* =========================================================
+   MENÚ LATERAL
+========================================================= */
+
+.side-menu {
+
+    position: fixed;
+
+    left: 0;
+
+    top: 0;
+
+    bottom: 0;
+
+    z-index: 2000;
+
+    width: 280px;
+
+    background: white;
+
+    transform: translateX(-100%);
+
+    transition: transform 0.25s ease;
+
+    box-shadow:
+        5px 0 25px rgba(0,0,0,0.12);
+}
+
+
+.side-menu.open {
+
+    transform: translateX(0);
+}
+
+
+.side-menu-header {
+
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 20px;
+
+    border-bottom: 1px solid #eee;
+}
+
+
+.side-menu-header strong {
+
+    font-size: 20px;
+}
+
+
+.close-menu {
+
+    width: 38px;
+
+    height: 38px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #f1f1f3;
+
+    font-size: 23px;
+
+    cursor: pointer;
+}
+
+
+.side-menu nav {
+
+    padding: 20px 12px;
+}
+
+
+.side-menu nav a {
+
+    display: block;
+
+    padding: 14px;
+
+    margin-bottom: 5px;
+
+    color: #222;
+
+    text-decoration: none;
+
+    border-radius: 12px;
+
+    font-weight: 500;
+}
+
+
+.side-menu nav a:hover {
+
+    background: #f2f2f4;
+}
+
+
+.menu-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1500;
+
+    background: rgba(0,0,0,0.35);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: 0.2s;
+}
+
+
+.menu-overlay.show {
+
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   PERFIL
+========================================================= */
+
+.profile-header {
+
+    background: white;
+
+    border-bottom: 1px solid #e5e5e7;
+}
+
+
+.profile-cover {
+    height: 260px;
+
+    background-image: url("images/portada.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+}
+
+
+.profile-information {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 0 25px 30px;
+
+    display: flex;
+
+    gap: 28px;
+}
+
+
+.profile-photo-container {
+
+    margin-top: -80px;
+
+    position: relative;
+}
+
+
+.profile-photo {
+
+    width: 160px;
+
+    height: 160px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 6px solid white;
+
+    box-shadow:
+        0 5px 25px rgba(0,0,0,0.18);
+}
+
+
+.profile-text {
+
+    padding-top: 22px;
+
+    max-width: 700px;
+}
+
+
+.profile-text h1 {
+
+    margin: 0;
+
+    font-size: 32px;
+
+    letter-spacing: -1px;
+}
+
+
+.username {
+
+    margin: 4px 0 15px;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+.presentation {
+
+    line-height: 1.6;
+
+    color: #555;
+
+    margin-bottom: 20px;
+}
+
+
+.profile-stats {
+
+    display: flex;
+
+    gap: 35px;
+}
+
+
+.profile-stats div {
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.profile-stats strong {
+
+    font-size: 20px;
+}
+
+
+.profile-stats span {
+
+    font-size: 12px;
+
+    color: #777;
+}
+
+
+/* =========================================================
+   CONTROLES
+========================================================= */
+
+.content-controls {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 30px 25px 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.content-controls h2 {
+
+    margin: 0 0 4px;
+
+    font-size: 24px;
+}
+
+
+.content-controls p {
+
+    margin: 0;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+.sort-button {
+
+    border: 1px solid #ddd;
+
+    background: white;
+
+    padding: 10px 15px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    transition: 0.2s;
+}
+
+
+.sort-button:hover {
+
+    background: #f1f1f3;
+}
+
+
+/* =========================================================
+   GALERÍA
+========================================================= */
+
+.posts-container {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 0 20px 50px;
+
+    columns: 4 240px;
+
+    column-gap: 18px;
+}
+
+
+.post-card {
+
+    display: inline-block;
+
+    width: 100%;
+
+    margin: 0 0 18px;
+
+    break-inside: avoid;
+
+    background: white;
+
+    border-radius: 17px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 2px 12px rgba(0,0,0,0.07);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+
+.post-card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 7px 25px rgba(0,0,0,0.12);
+}
+
+
+.post-image-container {
+
+    position: relative;
+
+    cursor: pointer;
+}
+
+
+.post-image {
+
+    width: 100%;
+
+    display: block;
+
+    max-height: 700px;
+
+    object-fit: cover;
+}
+
+
+.post-date {
+
+    position: absolute;
+
+    left: 12px;
+
+    top: 12px;
+
+    padding: 6px 9px;
+
+    border-radius: 9px;
+
+    background: rgba(0,0,0,0.65);
+
+    color: white;
+
+    font-size: 11px;
+
+    backdrop-filter: blur(5px);
+}
+
+
+.post-content {
+
+    padding: 14px;
+}
+
+
+.post-title {
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    margin-bottom: 6px;
+}
+
+
+.post-description {
+
+    color: #555;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    white-space: pre-line;
+}
+
+
+.post-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 0 14px 14px;
+}
+
+
+.like-button {
+
+    border: none;
+
+    background: #f2f2f4;
+
+    border-radius: 10px;
+
+    padding: 8px 12px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    font-size: 13px;
+}
+
+
+.like-button:hover {
+
+    background: #e8e8eb;
+}
+
+
+.like-button.liked {
+
+    background: #ffe6eb;
+}
+
+
+.comment-button {
+
+    border: none;
+
+    background: #f2f2f4;
+
+    border-radius: 10px;
+
+    padding: 8px 12px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+}
+
+
+.comment-button:hover {
+
+    background: #e8e8eb;
+}
+
+
+/* =========================================================
+   COMENTARIOS
+========================================================= */
+
+.comments-section {
+
+    display: none;
+
+    padding: 0 14px 14px;
+
+    border-top: 1px solid #eee;
+}
+
+
+.comments-section.open {
+
+    display: block;
+}
+
+
+.comments-title {
+
+    margin: 13px 0 10px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.comment {
+
+    display: flex;
+
+    gap: 9px;
+
+    margin-bottom: 10px;
+}
+
+
+.comment-avatar {
+
+    width: 30px;
+
+    height: 30px;
+
+    border-radius: 50%;
+
+    background: #ddd;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    font-size: 13px;
+}
+
+
+.comment-body {
+
+    background: #f2f2f4;
+
+    border-radius: 10px;
+
+    padding: 8px 10px;
+
+    flex: 1;
+}
+
+
+.comment-name {
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    margin-bottom: 3px;
+}
+
+
+.comment-text {
+
+    font-size: 13px;
+
+    line-height: 1.4;
+}
+
+
+.comment-form {
+
+    margin-top: 12px;
+}
+
+
+.comment-form input {
+
+    width: 100%;
+
+    padding: 9px;
+
+    margin-bottom: 7px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 9px;
+
+    outline: none;
+}
+
+
+.comment-form button {
+
+    width: 100%;
+
+    padding: 9px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #222;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+.comment-limit {
+
+    font-size: 12px;
+
+    color: #777;
+
+    margin-top: 10px;
+}
+
+
+/* =========================================================
+   SIN RESULTADOS
+========================================================= */
+
+.no-results {
+
+    max-width: 500px;
+
+    margin: 80px auto;
+
+    text-align: center;
+}
+
+
+.no-results-icon {
+
+    font-size: 50px;
+
+    margin-bottom: 15px;
+}
+
+
+.no-results h2 {
+
+    margin-bottom: 8px;
+}
+
+
+.no-results p {
+
+    color: #777;
+}
+
+
+.no-results button {
+
+    border: none;
+
+    background: #222;
+
+    color: white;
+
+    padding: 11px 16px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+
+.hidden {
+
+    display: none !important;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 3000;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+}
+
+
+.modal.open {
+
+    display: flex;
+}
+
+
+.modal-background {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(0,0,0,0.75);
+
+    backdrop-filter: blur(5px);
+}
+
+
+.modal-content {
+
+    position: relative;
+
+    z-index: 1;
+
+    max-width: 1000px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    width: 100%;
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 20px;
+}
+
+
+.modal-close {
+
+    position: absolute;
+
+    right: 15px;
+
+    top: 15px;
+
+    z-index: 2;
+
+    width: 40px;
+
+    height: 40px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(0,0,0,0.65);
+
+    color: white;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+
+.modal-post-image {
+
+    width: 100%;
+
+    max-height: 70vh;
+
+    object-fit: contain;
+
+    display: block;
+
+    background: #111;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .topbar {
+
+        padding: 0 12px;
+    }
+
+
+    .topbar-center {
+
+        padding: 0 10px;
+    }
+
+
+    .profile-button span {
+
+        display: none;
+    }
+
+
+    .profile-cover {
+
+        height: 180px;
+    }
+
+
+    .profile-information {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        text-align: center;
+    }
+
+
+    .profile-photo-container {
+
+        margin-top: -65px;
+    }
+
+
+    .profile-photo {
+
+        width: 130px;
+
+        height: 130px;
+    }
+
+
+    .profile-text {
+
+        padding-top: 0;
+    }
+
+
+    .profile-text h1 {
+
+        font-size: 27px;
+    }
+
+
+    .profile-stats {
+
+        justify-content: center;
+    }
+
+
+    .content-controls {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+
+    .sort-button {
+
+        width: 100%;
+    }
+
+
+    .posts-container {
+
+        columns: 2 160px;
+
+        padding: 0 10px 30px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .logo {
+
+        font-size: 19px;
+    }
+
+
+    .topbar-left {
+
+        min-width: auto;
+    }
+
+
+    .topbar-center {
+
+        padding: 0 5px;
+    }
+
+
+    .search-box {
+
+        height: 40px;
+    }
+
+
+    .posts-container {
+
+        columns: 1;
+    }
+
+
+    .profile-cover {
+
+        height: 150px;
+    }
+}

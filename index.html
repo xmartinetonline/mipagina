@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Página personal de xmartinet">
+
+    <title>xmartinet</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         BARRA SUPERIOR
+    ========================================== -->
+
+    <header class="topbar">
+
+        <div class="topbar-left">
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                aria-label="Abrir menú">
+                ☰
+            </button>
+
+            <a href="#" class="logo">
+                xmartinet
+            </a>
+
+        </div>
+
+
+        <div class="topbar-center">
+
+            <div class="search-box">
+
+                <span class="search-icon">
+                    🔎
+                </span>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Buscar por fecha..."
+                    autocomplete="off">
+
+                <button
+                    id="clearSearch"
+                    class="clear-search"
+                    title="Limpiar búsqueda">
+                    ×
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+            <button
+                class="profile-button"
+                id="profileButton">
+
+                <img
+                    src="images/perfil.jpg"
+                    alt="Perfil"
+                    onerror="this.src='https://placehold.co/100x100?text=X'">
+
+                <span>xmartinet</span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         MENÚ LATERAL
+    ========================================== -->
+
+    <aside class="side-menu" id="sideMenu">
+
+        <div class="side-menu-header">
+
+            <strong>
+                xmartinet
+            </strong>
+
+            <button
+                id="closeMenu"
+                class="close-menu">
+                ×
+            </button>
+
+        </div>
+
+        <nav>
+
+            <a href="#" data-section="inicio">
+                🏠 Inicio
+            </a>
+
+            <a href="#" data-section="fotos">
+                🖼️ Fotos
+            </a>
+
+            <a href="#" data-section="perfil">
+                👤 Mi perfil
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <div
+        class="menu-overlay"
+        id="menuOverlay">
+    </div>
+
+
+    <!-- =========================================
+         CONTENIDO PRINCIPAL
+    ========================================== -->
+
+    <main>
+
+        <!-- PERFIL -->
+
+        <section class="profile-header">
+
+            <div class="profile-cover">
+            </div>
+
+            <div class="profile-information">
+
+                <div class="profile-photo-container">
+
+                    <img
+                        class="profile-photo"
+                        src="images/perfil.jpg"
+                        alt="xmartinet"
+                        onerror="this.src='https://placehold.co/200x200?text=X'">
+
+                </div>
+
+
+                <div class="profile-text">
+
+                    <h1>
+                        xmartinet
+                    </h1>
+
+                    <p class="username">
+                        @xmartinet
+                    </p>
+
+                    <p class="presentation">
+                        Bienvenido a mi página personal.
+                        Acá voy a subir fotos, cosas que me gustan,
+                        momentos y cualquier cosa que quiera compartir.
+                    </p>
+
+                    <div class="profile-stats">
+
+                        <div>
+                            <strong id="postCount">
+                                0
+                            </strong>
+
+                            <span>
+                                publicaciones
+                            </span>
+                        </div>
+
+                        <div>
+                            <strong id="likeCount">
+                                0
+                            </strong>
+
+                            <span>
+                                likes
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTROLES -->
+
+        <section class="content-controls">
+
+            <div>
+
+                <h2>
+                    Publicaciones
+                </h2>
+
+                <p id="resultText">
+                    Todas mis publicaciones
+                </p>
+
+            </div>
+
+
+            <button
+                id="sortButton"
+                class="sort-button">
+
+                ↓ Más recientes
+
+            </button>
+
+        </section>
+
+
+        <!-- PUBLICACIONES -->
+
+        <section
+            class="posts-container"
+            id="postsContainer">
+
+        </section>
+
+
+        <!-- SIN RESULTADOS -->
+
+        <section
+            id="noResults"
+            class="no-results hidden">
+
+            <div class="no-results-icon">
+                🔎
+            </div>
+
+            <h2>
+                No encontramos publicaciones
+            </h2>
+
+            <p>
+                Probá con otra fecha.
+            </p>
+
+            <button
+                id="resetSearch">
+                Ver todas las publicaciones
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         MODAL DE PUBLICACIÓN
+    ========================================== -->
+
+    <div
+        class="modal"
+        id="postModal">
+
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+
+            <button
+                class="modal-close"
+                id="closeModal">
+                ×
+            </button>
+
+            <div id="modalPostContent">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
