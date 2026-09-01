@@ -2,9 +2,9 @@
    SUPABASE
 ========================================================= */
 
-const SUPABASE_URL = "https://mpkgjcwrvwwkoliffapw.supabase.co";
+const SUPABASE_URL = "https://bawzvocqjtezmlvupqal.supabase.co";
 
-const SUPABASE_KEY = "sb_publishable_sXt8YG-WVNArAsFty0522g_S5cfLR4B";
+const SUPABASE_KEY = "sb_publishable_KUAfM_vgVNIqy1jWH3lxxg_acxz2zRe";
 
 const supabaseClient = supabase.createClient(
     SUPABASE_URL,
