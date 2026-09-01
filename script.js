@@ -279,128 +279,46 @@ async function toggleLike(postId) {
         );
 
 
-    if (!name) {
+    // Si ya tenemos el nombre, damos/quitar Like directamente
+    if (name) {
 
-        // Crear ventana para pedir el nombre
-        const nameInput =
-            document.createElement("input");
-
-        nameInput.type = "text";
-        nameInput.placeholder = "Tu nombre";
-        nameInput.maxLength = 30;
-
-        const modal =
-            document.createElement("div");
-
-        modal.className = "name-modal";
-
-        modal.innerHTML = `
-            <div class="name-modal-content">
-
-                <h3>Dar ❤️ Like</h3>
-
-                <p>Tu nombre</p>
-
-            </div>
-        `;
-
-        modal
-            .querySelector(".name-modal-content")
-            .appendChild(nameInput);
-
-
-        const buttons =
-            document.createElement("div");
-
-        buttons.className =
-            "name-modal-buttons";
-
-
-        const cancelButton =
-            document.createElement("button");
-
-        cancelButton.textContent =
-            "Cancelar";
-
-
-        const likeButton =
-            document.createElement("button");
-
-        likeButton.textContent =
-            "Dar Like";
-
-
-        buttons.appendChild(
-            cancelButton
+        await realizarLike(
+            postId,
+            name
         );
-
-        buttons.appendChild(
-            likeButton
-        );
-
-
-        modal
-            .querySelector(".name-modal-content")
-            .appendChild(buttons);
-
-
-        document.body.appendChild(modal);
-
-
-        nameInput.focus();
-
-
-        cancelButton.onclick = function() {
-
-            modal.remove();
-
-        };
-
-
-        likeButton.onclick = function() {
-
-            const value =
-                nameInput.value.trim();
-
-
-            if (!value) {
-
-                nameInput.focus();
-
-                return;
-
-            }
-
-
-            name = value;
-
-
-            localStorage.setItem(
-                "xmartinet_nombre",
-                name
-            );
-
-
-            modal.remove();
-
-
-            realizarLike(
-                postId,
-                name
-            );
-
-        };
-
 
         return;
 
     }
 
 
-    await realizarLike(
-        postId,
-        name
-    );
+    // Si no tenemos nombre, mostramos el bloque
+    const section =
+        document.getElementById(
+            `like-name-${postId}`
+        );
+
+
+    if (!section) {
+        return;
+    }
+
+
+    section.classList.toggle("open");
+
+
+    if (section.classList.contains("open")) {
+
+        const input =
+            section.querySelector(
+                `[data-like-name="${postId}"]`
+            );
+
+        if (input) {
+            input.focus();
+        }
+
+    }
 
 }
 
@@ -413,6 +331,14 @@ async function realizarLike(
     postId,
     name
 ) {
+
+    name = name.trim();
+
+
+    if (!name) {
+        return;
+    }
+
 
     /*
         Si ya dio Like, lo quitamos.
@@ -477,6 +403,13 @@ async function realizarLike(
         }
 
     }
+
+
+    // Guardamos el nombre
+    localStorage.setItem(
+        "xmartinet_nombre",
+        name
+    );
 
 
     await cargarLikes();
@@ -873,6 +806,30 @@ function createPost(post) {
             </button>
 
         </div>
+        
+
+        <div
+            class="like-name-section"
+            id="like-name-${post.id}">
+
+            <div class="comments-title">
+                Dar ❤️ Like
+            </div>
+
+            <input
+                type="text"
+                class="like-name-input"
+                data-like-name="${post.id}"
+                maxlength="30"
+                placeholder="Tu nombre">
+
+            <button
+                class="like-name-submit"
+                data-like-submit="${post.id}">
+                Dar Like
+            </button>
+
+        </div>
 
 
         <div
@@ -1178,6 +1135,54 @@ postsContainer.addEventListener(
 
             toggleLike(id);
 
+
+            return;
+
+        }
+
+
+        const likeSubmit =
+            event.target.closest(
+                "[data-like-submit]"
+            );
+
+
+        if (likeSubmit) {
+
+            const id =
+                Number(
+                    likeSubmit.dataset.likeSubmit
+                );
+
+
+            const input =
+                document.querySelector(
+                    `[data-like-name="${id}"]`
+                );
+
+
+            if (!input) {
+                return;
+            }
+
+
+            const name =
+                input.value.trim();
+
+
+            if (!name) {
+
+                input.focus();
+
+                return;
+
+            }
+
+
+            realizarLike(
+                id,
+                name
+            );
 
             return;
 

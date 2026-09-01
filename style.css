@@ -1184,3 +1184,72 @@ body {
         height: 150px;
     }
 }
+
+/* =========================================================
+   NOMBRE PARA LIKE
+========================================================= */
+
+.like-name-section {
+
+    display: none;
+
+    padding: 0 14px 14px;
+
+    border-top: 1px solid #eee;
+}
+
+
+.like-name-section.open {
+
+    display: block;
+}
+
+
+.like-name-input {
+
+    width: 100%;
+
+    padding: 9px;
+
+    margin-bottom: 7px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    font-size: 13px;
+}
+
+
+.like-name-input:focus {
+
+    border-color: #bbb;
+}
+
+
+.like-name-submit {
+
+    width: 100%;
+
+    padding: 9px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #222;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 13px;
+}
+
+
+.like-name-submit:hover {
+
+    background: #333;
+}
