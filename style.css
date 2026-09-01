@@ -383,7 +383,7 @@ body {
 .profile-cover {
     height: 260px;
 
-    background-image: url("images/portada.jpg");
+    background-image: url("https://bawzvocqjtezmlvupqal.supabase.co/rest/v1/object/public/images/perfil.jpg");
 
     background-size: cover;
 
